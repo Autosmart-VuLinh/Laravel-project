@@ -213,7 +213,11 @@
 - value => text
 
 
+### Quy trình update code lên github
 
+- git add.
+- git commit -m "Noi dung update"
+- git push
 
 
 
