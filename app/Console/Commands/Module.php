@@ -125,32 +125,16 @@ class Module extends Command
                 //Tạo Repositories
                 $repositoryFile = base_path('modules/' . $name . '/src/Repositories/' . $name . 'Repository.php');
                 if (!File::exists($repositoryFile)) {
-                    File::put($repositoryFile, "<?php \n
-namespace Modules\\{$name}\\src\\Repositories;\n
-
-use App\\Models\\{$name};\n
-use App\\Repositories\\BaseRepository;\n
-use Modules\\{$name}\\src\\Repositories\\{$name}RepositoryInterface;\n
-
-class {$name}Repository extends BaseRepository implements {$name}RepositoryInterface\n
-{\n
-  public function getModel(){
-     
-  }
-}");
-
+                    $repositoryFileContent = file_get_contents("app/Console/Commands/Templates/ModuleRepository.txt");
+                    $repositoryFileContent = str_replace("{module}", $name, $repositoryFileContent);
+                    File::put($repositoryFile, $repositoryFileContent);
                 }
                 //Tạo RepositoriesInterface
                 $repositoryInterfaceFile = base_path('modules/' . $name . '/src/Repositories/' . $name . 'RepositoryInterface.php');
                 if (!File::exists($repositoryInterfaceFile)) {
-                    File::put($repositoryInterfaceFile, "<?php\n
-namespace Modules\\{$name}\\src\\Repositories;\n
-use App\\Models\\{$name};\n
-use App\\Repositories\\RepositoryInterface;\n
-
-interface {$name}RepositoryInterface extends RepositoryInterface\n
-{\n
-}");
+                    $repositoryInterfaceFileContent = file_get_contents("app/Console/Commands/Templates/ModuleRepositoryInterface.txt");
+                    $repositoryInterfaceFileContent = str_replace("{module}", $name, $repositoryInterfaceFileContent);
+                    File::put($repositoryInterfaceFile, $repositoryInterfaceFileContent);
                 }
             }
 
