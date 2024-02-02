@@ -2,7 +2,6 @@
 
 namespace Modules\User\src\Http\Controllers;
 
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
@@ -38,7 +37,7 @@ class UserController extends BaseController
                 return '<a href="' . route('admin.users.edit', $user->id) . '" class="btn btn-warning">Sửa</a>';
             })
             ->addColumn('delete', function ($user) {
-                return '<a href="' . route('admin.users.delete', $user->id) . '" class="btn btn-danger">Xóa</a>';
+                return '<a href="' . route('admin.users.delete', $user->id) . '" class="btn btn-danger delete-action">Xóa</a>';
             })
             ->editColumn('created_at', function ($users) {
                 return Carbon::parse($users->created_at)->format('d-m-Y H:i:s');
@@ -79,10 +78,11 @@ class UserController extends BaseController
             $data['password'] = bcrypt($request->password);
         }
         $this->userRepo->update($id, $data);
-        return redirect()->back()->with('mess', __('user::messages.update.success'));
+        return back()->with('mess', __('user::messages.update.success'));
     }
     public function delete($id)
     {
-        return view('user::detail', compact('id'));
+        $this->userRepo->delete($id);
+        return back()->with('mess', __('user::messages.delete.success'));
     }
 }

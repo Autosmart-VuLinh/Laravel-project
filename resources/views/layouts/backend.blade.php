@@ -21,7 +21,9 @@
     <link href="{{ asset('public/backend/css/sb-admin-2.min.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" href="{{asset('public/admin/vendor/datatables/dataTables.bootstrap4.min.css')}}"> --}}
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-
+    <!-- Link to SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+    @yield('stylesheet')
 </head>
 
 <body id="page-top">
@@ -87,6 +89,7 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('public/backend/js/script.js') }}"></script>
     <script src="{{ asset('public/backend/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('public/backend/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -98,16 +101,15 @@
 
     <!-- Page level plugins -->
     <script src="{{ asset('public/backend/vendor/chart.js/Chart.min.js') }}"></script>
-
     <!-- Page level custom scripts -->
     <script src="{{ asset('public/backend/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('public/backend/js/demo/chart-pie-demo.js') }}"></script>
-    {{-- <script src="{{ asset('public/backend/js/demo/datatables-demo.js') }}"></script> --}}
-    {{-- <script src="{{ asset('public/backend/vendor/datatables/jquery.dataTables.min.js') }}"></script> --}}
-    {{-- <script src="{{ asset('public/backend/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script> --}}
-  
+    <script src="{{ asset('public/plugins/ckeditor/ckeditor.js') }}"></script>
+
     <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-    <script src="{{asset('public/backend/js/script.js')}}"></script>
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('public/vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
     @yield('script')
 </body>
 

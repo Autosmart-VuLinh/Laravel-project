@@ -4,6 +4,7 @@ namespace Modules;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
+use Modules\Categories\src\Repositories\CategoriesRepository;
 use Modules\User\src\Commands\TestCommand;
 use Modules\User\src\Http\Middlewares\DemoMiddleware;
 use Modules\User\src\Repositories\UserRepository;
@@ -44,7 +45,8 @@ class ModuleServiceProvider extends ServiceProvider
 
 
         $this->app->singleton(
-            UserRepository::class
+            UserRepository::class,
+            // CategoriesRepository::class,
         );
     }
 
@@ -102,6 +104,4 @@ class ModuleServiceProvider extends ServiceProvider
             }
         }
     }
-
-  
 }

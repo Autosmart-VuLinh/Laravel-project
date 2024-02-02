@@ -36,6 +36,7 @@
             </div>
         </div>
     </div>
+    @include('parts.backend.delete')
 @endsection
 
 
